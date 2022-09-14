@@ -3,13 +3,13 @@ import uuid
 
 class Customer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    first_name = models.CharField(max_length=100, editable=False, blank=True)
+    first_name = models.CharField(max_length=100, editable=False, blank=False)
     middle_name = models.CharField(max_length=100, editable=False, blank=True)
-    last_name = models.CharField(max_length=100, editable=False, blank=True)
+    last_name = models.CharField(max_length=100, editable=False, blank=False)
     email = models.EmailField(max_length=100, editable=False, blank=True)
-    phone_number = models.CharField(max_length=13, editable=False, blank=True)
-    country_of_residence = models.CharField(max_length=100, editable=False, blank=True)
-    password = models.CharField(max_length=40, editable=False, blank=True)
+    phone_number = models.CharField(max_length=13, editable=False, blank=False)
+    country_of_residence = models.CharField(max_length=100, editable=False, blank=False)
+    password = models.CharField(max_length=40, editable=False, blank=False)
     # recipients = models.ManyToManyField(Recipients, blank=True)
 
 
