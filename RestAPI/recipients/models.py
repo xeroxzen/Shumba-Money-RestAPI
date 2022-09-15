@@ -12,10 +12,11 @@ class Recipient(models.Model):
     middle_name = models.CharField(max_length=50,blank=True,editable=True)
     last_name = models.CharField(max_length=50, blank=False,editable=True)
     email = models.EmailField(max_length=100, blank=True,editable=True)
-    phone_number = models.CharField(max_length=50,editable=True)
+    phone_number = models.CharField(max_length=20,editable=True)
     country_of_residence = models.CharField(max_length=50, choices=COUNTRIES,editable=True, blank=False)
     city_or_town = models.CharField(max_length=50,editable=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    sender = models.ForeignKey('users.Customer', blank=True, on_delete=models.CASCADE, related_name='sender')
     # transactions = models.ManyToManyField(Transaction, blank=True)
 
     class Meta:

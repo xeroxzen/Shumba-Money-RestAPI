@@ -45,15 +45,14 @@ INSTALLED_APPS = [
     # My Apps
     'users.apps.UsersConfig',
     'recipients.apps.RecipientsConfig',
-    # 'recipients',
-    # 'transactions'
+    # 'transactions.apps.TransactionsConfig',
     
 ]
 
 # new
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
 

@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework import generics, permissions
+from .models import Recipient
+from .serializers import RecipientSerializer
 
-# Create your views here.
+class RecipientList(generics.ListCreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    queryset = Recipient.objects.all()
+    serializer_class = RecipientSerializer
+
+
+class RecipientDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = ()
+    queryset = Recipient.objects.all()
+    serializer_class = RecipientSerializer
