@@ -43,10 +43,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'rest_framework_swagger',
+    'dj_rest_auth',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'rest_auth.registration',
+    'dj_rest_auth.registration',
     'corsheaders',
 
     # My Apps

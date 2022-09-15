@@ -1,8 +1,9 @@
-from django.urls import path
-from .views import RecipientList, RecipientDetail
+from rest_framework.routers import SimpleRouter
 
-urlpatterns = [
-    path("<int:pk>/", RecipientDetail.as_view(), name="recipient_detail"),
-    path("", RecipientList.as_view(), name="recipient_list"),
+from .views import RecipientViewSet
 
-]
+
+router = SimpleRouter()
+router.register('api/v1/recipients', RecipientViewSet)
+
+urlpatterns = router.urls
