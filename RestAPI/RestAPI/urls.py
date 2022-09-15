@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
+
+
+schema_view = get_swagger_view(title='Shumba Money API')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -23,5 +27,6 @@ urlpatterns = [
     path("api/v1/recipients/", include("recipients.urls")),
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path("", schema_view),
 ]

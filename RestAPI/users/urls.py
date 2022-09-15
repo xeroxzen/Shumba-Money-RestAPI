@@ -3,6 +3,6 @@ from .views import UserViewSet
 
 
 router = SimpleRouter()
-router.register('api/v1/customers', UserViewSet)
+router.register('api/v1/customers/', UserViewSet)
 
 urlpatterns = router.urls
