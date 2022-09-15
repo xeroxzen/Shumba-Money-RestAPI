@@ -8,8 +8,8 @@ from .forms import CustomerCreationForm, CustomerChangeForm
 class UserAdmin(BaseUserAdmin):
     add_form = CustomerCreationForm
     form = CustomerChangeForm
-    list_display = ('first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
-    search_fields = ('first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
+    list_display = ('username','first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
+    search_fields = ('username','first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
     list_per_page = 30
     # fieldsets = (
     #     (None, {'fields': ('first_name')}),

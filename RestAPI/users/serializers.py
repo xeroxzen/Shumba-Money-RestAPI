@@ -1,3 +1,5 @@
+from django.contrib.auth import get_user_model # new
+
 from rest_framework import serializers
 from .models import Customer
 
@@ -8,3 +10,9 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Customer.objects.create_user(**validated_data)
+
+
+class UserSerializer(serializers.ModelSerializer): #new
+    class Meta:
+        model = get_user_model
+        fields = ('id', 'username')
