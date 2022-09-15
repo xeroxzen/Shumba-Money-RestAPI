@@ -2,7 +2,16 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
+COUNTRIES = (
+    ('ZW', 'Zimbabwe'),
+    ('ZA', 'South Africa'),
+    ('KE', 'Kenya'),
+    ('UK', 'United Kingdom'),
+    ('US', 'United States'),
+    ('CA', 'Canada'),
+    ('AU', 'Australia'),
+    ('NZ', 'New Zealand'),
+)
 class Customer(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=100, editable=True, blank=False)
@@ -10,7 +19,7 @@ class Customer(AbstractUser):
     last_name = models.CharField(max_length=100, editable=True, blank=False)
     email = models.EmailField(max_length=100, editable=True, blank=True)
     phone_number = models.CharField(max_length=15, unique=True, blank=False, editable=True)
-    country_of_residence = models.CharField(max_length=100, editable=True, blank=False)
+    country_of_residence = models.CharField(max_length=100, editable=True, blank=False, choices=COUNTRIES)
     created_at = models.DateTimeField(auto_now_add=True)
     # recipients = models.ManyToManyField(Recipients, blank=True)
 
