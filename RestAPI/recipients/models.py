@@ -13,11 +13,12 @@ class Recipient(models.Model):
     last_name = models.CharField(max_length=50, blank=False,editable=True)
     email = models.EmailField(max_length=100, blank=True,editable=True)
     phone_number = models.CharField(max_length=20,editable=True)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     country_of_residence = models.CharField(max_length=50, choices=COUNTRIES,editable=True, blank=False)
     city_or_town = models.CharField(max_length=50,editable=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     sender = models.ForeignKey('users.Customer', blank=True, on_delete=models.CASCADE, related_name='sender')
-    # transactions = models.ManyToManyField(Transaction, blank=True)
+        
 
     class Meta:
         ordering = ["-created_at"]
@@ -37,3 +38,6 @@ class Recipient(models.Model):
     def get_total_users(cls):
         return cls.objects.all().count()
     
+    # all transactions for this recipient
+    def get_all_transactions(self):
+        return self.transactions.all()

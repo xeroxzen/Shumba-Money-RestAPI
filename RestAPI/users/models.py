@@ -17,11 +17,12 @@ class Customer(AbstractUser):
     first_name = models.CharField(max_length=100, editable=True, blank=False)
     middle_name = models.CharField(max_length=100, editable=True, blank=True)
     last_name = models.CharField(max_length=100, editable=True, blank=False)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     email = models.EmailField(max_length=100, editable=True, blank=True)
     phone_number = models.CharField(max_length=20, unique=True, blank=False, editable=True)
     country_of_residence = models.CharField(max_length=100, editable=True, blank=False, choices=COUNTRIES)
     created_at = models.DateTimeField(auto_now_add=True)
-    # recipient = models.ForeignKey('recipients.Recipient', blank=True, on_delete=models.CASCADE, related_name='sender')
+    beneficiary = models.ForeignKey('recipients.Recipient', null=True, on_delete=models.CASCADE, related_name='beneficiary')
 
 
     class Meta:
