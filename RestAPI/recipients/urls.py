@@ -4,6 +4,6 @@ from .views import RecipientViewSet
 
 
 router = SimpleRouter()
-router.register('api/v1/recipients/', RecipientViewSet)
+router.register('recipients', RecipientViewSet, basename='recipients')
 
 urlpatterns = router.urls
