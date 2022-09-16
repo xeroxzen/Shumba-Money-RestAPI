@@ -11,8 +11,8 @@ class Recipient(models.Model):
     first_name = models.CharField(max_length=50, blank=False, editable=True)
     middle_name = models.CharField(max_length=50,blank=True,editable=True)
     last_name = models.CharField(max_length=50, blank=False,editable=True)
-    email = models.EmailField(max_length=100, blank=True,editable=True)
-    phone_number = models.CharField(max_length=20,editable=True)
+    email = models.EmailField(max_length=100, blank=True,editable=True, unique=True)
+    phone_number = models.CharField(max_length=20,editable=True, unique=True)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     country_of_residence = models.CharField(max_length=50, choices=COUNTRIES,editable=True, blank=False)
     city_or_town = models.CharField(max_length=50,editable=True,blank=True)
@@ -41,3 +41,12 @@ class Recipient(models.Model):
     # all transactions for this recipient
     def get_all_transactions(self):
         return self.transactions.all()
+
+    # total amount received
+    def get_total_amount_received(self):
+        return self.transactions.aggregate(models.Sum('amount'))['amount__sum']
+
+    # A recipient can belong to many users and a user can have many recipients
+    def get_all_recipients(self):
+        return self.recipients.all()
+
