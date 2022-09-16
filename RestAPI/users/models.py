@@ -43,4 +43,10 @@ class Customer(AbstractUser):
     @classmethod
     def get_total_users(cls):
         return cls.objects.all().count()
+
+    # set new beneficiary for this user and save them
+    def set_beneficiary(self, recipient):
+        self.beneficiary = recipient
+        self.save()
+        
     

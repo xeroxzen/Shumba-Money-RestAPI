@@ -8,11 +8,8 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         exclude = ('is_active', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups', 'user_permissions')
 
-    def create(self, validated_data):
-        return Customer.objects.create_user(**validated_data)
-
 
 class UserSerializer(serializers.ModelSerializer): #new
     class Meta:
-        model = get_user_model
-        fields = ('id', 'username')
+        model = get_user_model()
+        fields = ['id', 'username', 'middle_name', 'first_name', 'last_name', 'email',  'balance', 'beneficiary', 'password']
