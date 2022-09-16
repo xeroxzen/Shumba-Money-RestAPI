@@ -4,7 +4,7 @@ import uuid
 # Create your models here.
 class Transaction(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    sender = models.ForeignKey("users.Customer", on_delete=models.CASCADE, related_name="sender")
+    sender = models.ForeignKey("users.Customer", on_delete=models.CASCADE, related_name="customer")
     recipient = models.ForeignKey("recipients.Recipient", on_delete=models.CASCADE, related_name="recipient")
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)

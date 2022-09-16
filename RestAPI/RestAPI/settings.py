@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     # My Apps
     'users.apps.UsersConfig',
     'recipients.apps.RecipientsConfig',
-    # 'transactions.apps.TransactionsConfig',
+    'transactions.apps.TransactionsConfig',
     
 ]
 
