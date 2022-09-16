@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Transaction
+from .serializers import TransactionSerializer
+from .permissions import IsOwnerOrReadOnly
 
-# Create your views here.
+class TransactionViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsOwnerOrReadOnly,)
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
