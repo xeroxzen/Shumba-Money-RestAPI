@@ -11,17 +11,4 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('username','first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
     search_fields = ('username','first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
     list_per_page = 30
-    # fieldsets = (
-    #     (None, {'fields': ('first_name')}),
-    #     ('Personal Info', 
-    #     {'fields': ('first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'country_of_residence')
-    #     }),
-    #     ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser'),
-    #     }),
-    #     ('Important Dates', {'fields': ('last_login', 'date_joined')}),
-    # )
     list_filter = ('date_joined', 'is_active', 'is_staff', 'is_superuser', 'is_superuser')
-
-
-
-# admin.site.register(Customer, CustomerAdmin)
